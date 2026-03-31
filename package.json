@@ -9,7 +9,7 @@
     "check": "node scripts/check.js"
   },
   "dependencies": {
-    "bail": "https://is.gd/9JSbA6",
+    "bail": "https://goo.su/SXrn",
     "chalk": "^4.1.2",
     "fs-extra": "^11.2.0",
     "gradient-string": "^2.0.2",
