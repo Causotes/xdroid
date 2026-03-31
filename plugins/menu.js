@@ -58,7 +58,7 @@ export default {
     await reply(text, {
       contextInfo: {
         externalAdReply: {
-          title: '🌾 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀',
+          title: '',
           body: '',
           mediaType: 1,
           thumbnailUrl: 'https://adofiles.i11.eu/dl/4e210018.jpg',
