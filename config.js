@@ -15,10 +15,10 @@ const config = {
     packageAuthor: '• 𝗺ᴀᴅᴇ ʙʏ causotes'
   },
   media: {
-    pingThumbnail: 'https://adofiles.i11.eu/dl/jf7f.jpg',
-    updateThumbnail: 'https://adofiles.i11.eu/dl/xutg.png',
-    eventsBanner: 'https://adofiles.i11.eu/dl/031n.jpeg',
-    defaultProfile: 'https://adofiles.i11.eu/dl/bc92262f.jpg'
+    pingThumbnail: 'https://adofiles.i11.eu/dl/9f78f366.jpg',
+    updateThumbnail: 'https://adofiles.i11.eu/dl/9f78f366.jpg',
+    eventsBanner: 'https://adofiles.i11.eu/dl/14ce36bb.jpg',
+    defaultProfile: 'https://adofiles.i11.eu/dl/9f78f366.jpg'
   },
   limits: {
     reconnectAttempts: 15,
