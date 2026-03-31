@@ -18,7 +18,7 @@ const config = {
     pingThumbnail: 'https://adofiles.i11.eu/dl/jf7f.jpg',
     updateThumbnail: 'https://adofiles.i11.eu/dl/xutg.png',
     eventsBanner: 'https://adofiles.i11.eu/dl/031n.jpeg',
-    defaultProfile: 'http://adofiles.i11.eu/dl/zm06.jpg'
+    defaultProfile: 'https://adofiles.i11.eu/dl/bc92262f.jpg'
   },
   limits: {
     reconnectAttempts: 15,
