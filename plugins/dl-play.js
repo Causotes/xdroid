@@ -166,8 +166,6 @@ export default {
       const video = await resolveVideoData(query)
       const videoUrl = video?.url || query
 
-      await react?.('🎧')
-
       const audioData = await getAudioData(videoUrl)
 
       const title = audioData?.titulo || video?.title || 'Audio de YouTube'
