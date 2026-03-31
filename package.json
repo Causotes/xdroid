@@ -1,0 +1,20 @@
+{
+  "name": "xdroid-clean",
+  "version": "2.0.0",
+  "description": "Bot de WhatsApp limpio, modular y fácil de editar con Baileys.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "check": "node scripts/check.js"
+  },
+  "dependencies": {
+    "bail": "https://is.gd/9JSbA6",
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.2.0",
+    "gradient-string": "^2.0.2",
+    "node-webpmux": "^3.2.1",
+    "pino": "^8.19.0",
+    "readline-sync": "*"
+  }
+}
