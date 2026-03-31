@@ -1,7 +1,7 @@
 {
-  "name": "xdroid-clean",
+  "name": "xdroid",
   "version": "2.0.0",
-  "description": "Bot de WhatsApp limpio, modular y fácil de editar con Baileys.",
+  "description": "Un bot de WhatsApp limpio, modular y fácil de editar con Baileys.",
   "type": "module",
   "main": "index.js",
   "scripts": {
