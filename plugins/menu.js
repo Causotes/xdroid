@@ -61,7 +61,7 @@ export default {
           title: '🌾 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀',
           body: '',
           mediaType: 1,
-          thumbnailUrl: '',
+          thumbnailUrl: 'https://adofiles.i11.eu/dl/4e210018.jpg',
           sourceUrl: '',
           renderLargerThumbnail: true
         }
