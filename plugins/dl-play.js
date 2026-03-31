@@ -1,3 +1,5 @@
+import yts from 'yt-search'
+
 function isYouTubeUrl(value = '') {
   return /(?:youtube\.com|youtu\.be)/i.test(String(value))
 }
@@ -13,10 +15,15 @@ function extractYouTubeVideoId(input = '') {
       return url.pathname.split('/').filter(Boolean)[0] || ''
     }
 
-    if (host === 'youtube.com' || host === 'm.youtube.com' || host === 'music.youtube.com') {
+    if (
+      host === 'youtube.com' ||
+      host === 'm.youtube.com' ||
+      host === 'music.youtube.com'
+    ) {
       if (url.searchParams.get('v')) return url.searchParams.get('v') || ''
 
       const parts = url.pathname.split('/').filter(Boolean)
+
       const shortsIndex = parts.indexOf('shorts')
       if (shortsIndex !== -1) return parts[shortsIndex + 1] || ''
 
@@ -26,20 +33,6 @@ function extractYouTubeVideoId(input = '') {
   } catch {}
 
   return ''
-}
-
-async function loadYtSearch() {
-  try {
-    const mod = await import('ytsearch')
-    return mod.default || mod.search || mod.ytSearch || mod
-  } catch {
-    try {
-      const mod = await import('yt-search')
-      return mod.default || mod
-    } catch {
-      throw new Error('-')
-    }
-  }
 }
 
 function normalizeVideo(result) {
@@ -93,7 +86,6 @@ function truncate(text = '', max = 120) {
 }
 
 async function resolveVideoData(input) {
-  const yts = await loadYtSearch()
   const text = String(input || '').trim()
 
   if (isYouTubeUrl(text)) {
@@ -138,6 +130,7 @@ async function getAudioData(videoUrl) {
   }
 
   const json = await response.json()
+
   if (!json?.status || !json?.resultado?.url_dl) {
     throw new Error('La API no devolvió un audio válido.')
   }
@@ -184,7 +177,9 @@ export default {
       const thumb = pickThumbnail(video, audioData)
       const audioUrl = audioData?.url_dl
 
-      if (!audioUrl) throw new Error('No se obtuvo el enlace de descarga del audio.')
+      if (!audioUrl) {
+        throw new Error('No se obtuvo el enlace de descarga del audio.')
+      }
 
       const caption = [
         '🍄 *Downloads YouTube*',
