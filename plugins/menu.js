@@ -1,12 +1,18 @@
-const CATEGORY_LABELS = {
-  general: 'General',
-  grupo: 'Grupo',
-  owner: 'Owner',
-  herramientas: 'Herramientas'
+function formatCategoryLabel(value = '') {
+  return String(value || 'general')
+    .trim()
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .split(' ')
+    .filter(Boolean)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 }
 
-function categoryLabel(value = '') {
-  return CATEGORY_LABELS[value] || value.charAt(0).toUpperCase() + value.slice(1)
+function sortCategories(a = '', b = '') {
+  if (a === 'general') return -1
+  if (b === 'general') return 1
+  return a.localeCompare(b, 'es', { sensitivity: 'base' })
 }
 
 export default {
@@ -15,21 +21,30 @@ export default {
   category: 'general',
   description: 'Muestra el menú principal',
   usage: '.menu',
-  async run({ reply, plugins, config }) {
+
+  async run({ reply, plugins = [], config }) {
     const grouped = new Map()
 
     for (const plugin of plugins) {
-      if (!grouped.has(plugin.category)) grouped.set(plugin.category, [])
-      grouped.get(plugin.category).push(plugin)
+      if (!plugin?.command || typeof plugin.run !== 'function') continue
+
+      const category = String(plugin.category || 'general').trim().toLowerCase() || 'general'
+      if (!grouped.has(category)) grouped.set(category, [])
+      grouped.get(category).push(plugin)
     }
 
-    const sections = [...grouped.entries()].map(([category, items]) => {
-      const lines = items.map(plugin => {
-        const names = [plugin.command, ...plugin.aliases].filter(Boolean)
-        return `◦ *${config.prefix}${plugin.command}*${names.length > 1 ? ` — ${names.slice(1).join(', ')}` : ''}`
+    const sections = [...grouped.entries()]
+      .sort(([a], [b]) => sortCategories(a, b))
+      .map(([category, items]) => {
+        const lines = items
+          .sort((a, b) => String(a.command).localeCompare(String(b.command), 'es', { sensitivity: 'base' }))
+          .map(plugin => {
+            const description = String(plugin.description || 'Sin descripción').trim()
+            return `◦ *${config.prefix}${plugin.command}* — ${description}`
+          })
+
+        return `🍃 *${formatCategoryLabel(category)}*\n${lines.join('\n')}`
       })
-      return `🍃 *${categoryLabel(category)}*\n${lines.join('\n')}`
-    })
 
     const text = [
       `🌴 ¡Hola! Soy *${config.bot.name}*, un gusto ayudarte.`,
