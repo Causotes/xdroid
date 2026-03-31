@@ -8,7 +8,7 @@ const config = {
     enabled: true,
     phoneNumber: ''
   },
-  owners: ['', ''],
+  owners: ['573135180876', '50498273976'],
   bot: {
     name: 'XDroid',
     packageName: '🌵 XDroid',
