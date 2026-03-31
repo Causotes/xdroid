@@ -1,4 +1,4 @@
-{
+a{
   "name": "xdroid",
   "version": "2.0.0",
   "description": "Un bot de WhatsApp limpio, modular y fácil de editar con Baileys.",
@@ -9,7 +9,7 @@
     "check": "node scripts/check.js"
   },
   "dependencies": {
-    "bail": "https://goo.su/SXrn",
+    "bail": "github:Ado21/BailMod",
     "chalk": "^4.1.2",
     "fs-extra": "^11.2.0",
     "gradient-string": "^2.0.2",
